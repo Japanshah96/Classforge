@@ -19,11 +19,12 @@ const Dashboard = () => {
     lastUpdated: "",
   });
   const [chartData, setChartData] = useState([]);
+  const baseUrl = process.env.REACT_APP_API_URL;
 
   useEffect(() => {
     const fetchStats = async () => {
       try {
-        const res = await fetch("http://localhost:8000/stats-summary");
+        const res = await fetch(`${baseUrl}/stats-summary`);
         const data = await res.json();
         console.log("Chart Data:", data.classAverages); // 👈 Add this line
         setStats(data);

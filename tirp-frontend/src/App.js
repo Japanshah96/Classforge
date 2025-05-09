@@ -19,10 +19,10 @@ import EditStudent from "./pages/EditStudent";
 import Logout from "./pages/logout";
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const token = localStorage.getItem("token");
+  const [isLoggedIn, setIsLoggedIn] = useState(!!token);
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
     setIsLoggedIn(!!token); // Set to true if token exists
   }, []);
 

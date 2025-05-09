@@ -7,13 +7,14 @@ const Signup = () => {
   const [fullName, setFullName] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
+  const baseUrl = process.env.REACT_APP_API_URL;
 
   const handleSignup = async (e) => {
     e.preventDefault();
     setError("");
 
     try {
-      const res = await fetch("http://localhost:8000/signup", {
+      const res = await fetch(`${baseUrl}/signup`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

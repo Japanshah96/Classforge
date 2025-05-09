@@ -1,9 +1,11 @@
 import React from "react";
 
 const Export = () => {
+  const baseUrl = process.env.REACT_APP_API_URL;
+
   const handleDownload = () => {
     const link = document.createElement("a");
-    link.href = "http://localhost:8000/export/csv";
+    link.href = `${baseUrl}/export/csv`;
     link.download = "students.csv";
     document.body.appendChild(link);
     link.click();

@@ -3,11 +3,12 @@ import ForceGraph2D from "react-force-graph-2d";
 
 const Allocation = () => {
   const [graphData, setGraphData] = useState({ nodes: [], links: [] });
+  const baseUrl = process.env.REACT_APP_API_URL;
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch("http://localhost:8000/students");
+        const res = await fetch(`${baseUrl}/students`);
         const students = await res.json();
 
         const nodes = students.map((s) => ({

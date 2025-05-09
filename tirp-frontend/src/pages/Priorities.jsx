@@ -24,11 +24,12 @@ const Priorities = () => {
 
   const [status, setStatus] = useState("");
   const [loading, setLoading] = useState(false);
+  const baseUrl = process.env.REACT_APP_API_URL;
 
   useEffect(() => {
     const fetchLatest = async () => {
       try {
-        const res = await fetch("http://localhost:8000/priorities/latest");
+        const res = await fetch(`${baseUrl}/priorities/latest`);
         if (res.ok) {
           const data = await res.json();
           setWeights(data);
@@ -47,7 +48,7 @@ const Priorities = () => {
 
   const handleSubmit = async () => {
     try {
-      const res = await fetch("http://localhost:8000/priorities", {
+      const res = await fetch(`${baseUrl}/priorities`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(weights),
@@ -70,7 +71,7 @@ const Priorities = () => {
     setStatus("⚙️ Running AI allocation...");
 
     try {
-      const res = await fetch("http://localhost:8000/run-allocation-ai", {
+      const res = await fetch(`${baseUrl}/run-allocation-ai`, {
         method: "POST",
       });
 

@@ -5,11 +5,12 @@ const EditStudent = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [formData, setFormData] = useState(null);
+  const baseUrl = process.env.REACT_APP_API_URL;
 
   useEffect(() => {
     const fetchStudent = async () => {
       try {
-        const res = await fetch(`http://localhost:8000/students/${id}`);
+        const res = await fetch(`${baseUrl}/students/${id}`);
         if (!res.ok) throw new Error("Failed to fetch student");
         const data = await res.json();
         setFormData(data);

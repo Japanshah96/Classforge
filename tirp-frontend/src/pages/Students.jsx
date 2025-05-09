@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+
 const Students = () => {
   const [students, setStudents] = useState([]);
   const [filtered, setFiltered] = useState([]);
   const [loading, setLoading] = useState(true);
   const [classes, setClasses] = useState([]);
-
+  const baseUrl = process.env.REACT_APP_API_URL;
+  
   const [filters, setFilters] = useState({
     class: "",
     academicMin: 0,
@@ -20,7 +22,7 @@ const Students = () => {
   useEffect(() => {
     const fetchStudents = async () => {
       try {
-        const res = await fetch("http://localhost:8000/students");
+        const res = await fetch(`${baseUrl}/students`);
         if (!res.ok) throw new Error("Failed to fetch students");
         const data = await res.json();
         setStudents(data);
@@ -55,7 +57,7 @@ const Students = () => {
   const deleteStudent = async (id) => {
     if (!window.confirm("Are you sure you want to delete this student?")) return;
     try {
-      const res = await fetch(`http://localhost:8000/students/${id}`, {
+      const res = await fetch(`${baseUrl}/students/${id}`, {
         method: "DELETE",
       });
       if (res.ok) {

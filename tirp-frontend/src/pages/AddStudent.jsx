@@ -10,7 +10,7 @@ const AddStudent = () => {
     disrespectful: "",
     activities: "",
   });
-
+  const baseUrl = process.env.REACT_APP_API_URL;
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -25,7 +25,7 @@ const AddStudent = () => {
     };
 
     try {
-      const res = await fetch("http://localhost:8000/students", {
+      const res = await fetch(`${baseUrl}/students`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
