@@ -10,3 +10,7 @@ pandas
 gunicorn
 PyJWT
 torch
+torch_geometric
+typing
+pydantic
+collections
