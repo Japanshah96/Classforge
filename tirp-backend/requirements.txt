@@ -13,4 +13,3 @@ torch
 torch_geometric
 typing
 pydantic
-collections
