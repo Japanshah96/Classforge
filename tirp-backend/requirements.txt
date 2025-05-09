@@ -13,3 +13,5 @@ torch
 torch_geometric
 typing
 pydantic
+sklearn
+numpy
